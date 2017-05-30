@@ -1,0 +1,132 @@
+---
+title: "Economics in R - Data of Macroeconomics"
+author: "Hyundo Im"
+date: "May 30 2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Measuring the Value of Economic Activity: Gross Domestic Product
+
+__Gross Domestic Product__, or GDP, is considered the best measure of performances of the economy.
+There are two ways to view GDP:
+  1. view GDP as the total income of everyone in the economy
+  2. the total expenditure on the economy's output of goods and services.
+
+## Income, Expenditure, and the Circular Flow
+* What is a flow?
+  + Economists distinguish two kinds of quantity variables
+    + Stock: a quantity measured at a given point in time
+    + Flow: a quantity measured per unit of time.
+  + Examples of Stock and Flow
+    + A person's wealth is a tcok and his income and expenditure are flows
+    + The number of unemployed people is a stock, the number of people losing their jobs is a flow
+    + The amount of capital in the economy is a stock, the amount of investment is a flow
+
+## Rules for Computing GDP
+Definition of GDP again: _the market value of all final goods and services produced within an economy in a given period of time._
+
+#### <span style = "color:red"> Used goods are not included in GDP </span>
+
+#### <span style = "color:red"> Inventories that are produced in one year are only considered the part of GDP of that year no matter when it is sold </span>
+
+#### <span style = "color:red"> Intermediate goods and value added are not included in GDP </span>
+
+#### <span style = "color:red"> Housing services and other imputations are complicated... </span>
+
+## Real GDP and Nominal GDP
+Nominal GDP: the value of goods and services measured at current prices.
+Real GDP: the value of good and services measured using a constant set of prices.
+
+### <span style = "color:red"> Computing Real GDP </span>
+Real GDP is measured with the price of _base year_.
+EX) Suppose the base year is 2014.
+
+Real GDP$_{2014} = Price_{2014} \times Quantity_{2014}$
+
+Real GDP$_{2015} = Price_{2014} \times Quantity_{2015}$
+
+Real GDP$_{2016} = Price_{2014} \times Quantity_{2016}$
+
+## The GDP Deflator
+GDP Deflator: also called _implicit price deflator for GDP_, is the ratio of nominal GDP to Real GDP
+
+<center><h4> GDP Deflator = $\frac{Nominal GDP}{Real GDP}$ </h4></center>
+
+We can rewrite as:
+<center><h4> Real GDP = $\frac{Nominal GDP}{GDP Deflator}$ </h4></center>
+
+__Let's take a look at GDP
+```{r message=FALSE}
+library(Quandl)
+library(quantmod)
+#Quandl.search("GDP Korea")
+KOR_GDP<-Quandl("OECD/MEI_CLI_LORSGPTD_KOR_M",type = "xts")
+plot(KOR_GDP,type="l",main="Korea's GDP(Normalized), 100= September 2010")
+```
+
+## The Components of Expenditure
+The national income accounts divide GDP into four broad categories of spending:
+* Consumption (C)
+* Investment (I)
+* Government Purchases (G)
+* Net Exports (NX)
+We can write GDP as:
+<center><h4> Y = C + I + G + NX </h4></center>
+
+This equation is called the __national income accounts identity__
+
+__Consumption__ : goods and services bought by households
+
+__Investment__ : goods bought for future use. Investment is also divided into three subcategories:
+  1. Business fixed investment: purchase of new plant and equipment by firms
+  2. Residential investment: the purchase of new housing by households and landlords.
+  3. Inventory investment: the increase in firms' inventories of goods
+  
+__Government Purchases__ : goods and services bought by federal, state, and local governments.
+
+__Net Exports__ : the value of goods and services sold to other countries (export) minus value of goods and services that foreigners sell us (Imports).
+
+## Other Measures of Income
+
+<center><h4>Gross National Product(GNP) = GDP + Factor Payments from Abroad - Factor Payments to Abroad</h4></center>
+
+GNP measures the total income earned by nationals(residents of a nation)
+
+<center><h4>Net national Product(NNP) = GNP - Depreciation </h4></center>
+
+Depreciation of capital: the amount of the economy's stock of plants, equipment, and residential structures that wears out during the year.
+
+<center><h4>Personal Income = National Income - Indirect Business Taxes - Corporate Profits - Social Insurance Contributions - Net Interest 
++ Dividends + Government Transfers to Individuals + Personal Interest Income </h4></center>
+
+<center><h4> Disposable Personal Income = Personal Income - Personal Tax and Nontax Payments </h4></center>
+
+
+# Measuring the Cost of Living: The Consumer Price Index (CPI)
+
+## The Price of a Basket of Goods
+__Consumer Price Index(CPI)__ turns the prices of many goods and services into a single index measuring the overall level of prices
+
+<center><h4> CPI = $\frac{Prices of Baskets of Current Year}{Prices of Baskets of Base Year}$ </h4></center>
+
+__CPI is a good measure to derive inflation as well as GDP Deflator. However, genearally, CPI overstates the inflation. We need to consider that when we use CPI__
+
+# Measuring Joblessness: The Unemployment Rate
+* Employed: those who at the time of the survey worked as paid employees, worked in their own business, or worked as unpaid workers in a family member's business.
+* Unemployed: those who were not emplyed, were available for work, and had tried to find employment during the previous four weeks.
+* Not in the labor force: those who fit neither of the first two categories, such as a full-time student, homemaker, or retiree.
+
+<center><h4> Labor Force = Number of Employed + Number of Unemployed </h4></center>
+
+<center><h4> Unemployment Rate = $\frac{Number of Unemployed}{Labor Force} \times 100$ </h4></center>
+
+<center><h4> Labor-Force Participation Rate = $\frac{Labor Force}{Adult Population} \times 100$ </h4></center>
+
+```{r}
+Quandl.search("unemployment United States")
+UE<-Quandl("FRBC/UNEMP_ST_US",type="xts")
+plot(UE,type="l",main="Unemployment Rate of USA",xlab="year",ylab="Unemployment Rate")
+plot(UE["2007::"],main="Unemployment Rate of USA",xlab="year",ylab="Unemployment Rate")
+```
