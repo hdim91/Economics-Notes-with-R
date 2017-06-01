@@ -1,0 +1,67 @@
+---
+title: "Interactive Flow Chart Practice"
+author: "Hyundo Im"
+date: "May 31 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+# Interactive Flow Chart Practice
+
+##  ___Reference from Kyle E. Walker___
+ 
+```{r message=FALSE}
+library(dplyr)
+set.seed(12480)
+
+df<-data_frame(origins = sample(c('Portugal','Romania','Nigeria','Peru'),
+                                size=100,replace=TRUE),
+               destinations=sample(c('Texas','New Jersey', "Colorado","Minnesota"),
+                                   size=100,replace=TRUE))
+head(df)
+```
+
+
+```{r}
+df2<-df%>%
+  group_by(origins,destinations)%>%
+  summarise(counts=n())%>%
+  ungroup()%>%
+  arrange(desc(counts))
+
+df2  
+```
+
+
+```{r}
+#install.packages("networkD3")
+library(networkD3)
+name_vec<-c(unique(df2$origins),unique(df2$destinations))
+
+nodes<-data.frame(name=name_vec,id=0:7)
+
+links<-df2%>%
+  left_join(nodes,by=c('origins'='name'))%>%
+  rename(origin_id=id)%>%
+  left_join(nodes,by=c('destinations'='name'))%>%
+  rename(dest_id=id)
+
+forceNetwork(Links = links, Nodes=nodes, Source='origin_id',Target='dest_id',Value='counts',
+             NodeID='name',Group='id', zoom=TRUE)
+```
+
+```{r}
+sankeyNetwork(Links=links,Nodes=nodes,Source='origin_id',Target='dest_id',
+              Value='counts',NodeID='name',fontSize = 16)
+```
+
+```{r message=FALSE}
+#devtools::install_github("timelyportfolio/parsetR")
+
+library(parsetR)
+
+parset(df2,dimensions=c('origins','destinations'),
+       value=htmlwidgets::JS('function(d){return d.counts}'),
+       tension=0.5)
+```
+
