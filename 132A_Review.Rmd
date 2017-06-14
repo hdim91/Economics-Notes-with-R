@@ -1,0 +1,355 @@
+---
+title: "Review Sheet"
+author: "Hyundo Im"
+date: "June 12 2017"
+output: html_document
+---
+
+<center><h1> Review Sheet </h1></center>
+
+# Section 3: Valuation of securities and derivatives
+## * Bonds
+
+<center><h3> $P_{b}(t) = \text{Price of the bond "B" in period "t"}$</h3>
+<h3>FV = Face value to be paid at the time of maturity</h3>
+<h3>C = coupon (in dollars) = c * FV</h3>
+<h3>c = coupon rate = C/FV</h3>
+<h3>r = YTM</h3>
+<h3> In Equilibrium, Bond pricing Condition:</h3>
+<h3> $P_{B}(t) = PV(t)$</h3>
+</center>
+  
+  __Note__: The above condition is used to solve for the YTM.
+__Solve for price__ when r,n,FV given
+__Solve for r__ when price,n, FV given
+
+###  1. Understand the following terms
+  a. maturity date
+  b. coupon rate
+  c. floating rate
+    * rate tied to another interest rate
+  d. face value(or par value)
+  e. yield to maturity
+  f. forward rate
+  g. market-interest-rate-rist
+  h. callable bond
+    * holder can buy back
+  i. convertible bond
+    * convert bond t pre-specified # of equities.
+  j. puttable bond
+    * Retire debt, get FV
+
+###  2. What are the distinguishing features of coupon bonds, discount bonds, annuities, and perpetuities (consoles)?
+
+___Coupon Bond___
+
+* holder can buy back
+<center><h4>$P_{B}(t)$ = PV(t) = $\frac{C}{(1+r)^{1}} + ... + \frac{C}{(1+r)^{n}} + \frac{FV}{(1+r)^{n}}$ </h4>
+<h4>(geom series) = $\frac{C}{(1+r)}(\frac{(1-\frac{1}{1+r})^{n}}{1-\frac{1}{1+r}}) + \frac{FV}{(1+r)^{n}}$ </h4>
+<h4> (C = cFV) = $\frac{cFV}{r}(1-(\frac{1}{(1+r)})^{n}) + \frac{FV}{(1+r)^{n}}$</h4>
+<h4> = $P_{B}(t) = PV(t) = FV[\frac{c}{r}(1-\frac{1}{(1+r)^{n}}) + \frac{1}{(1+r)^{n}}]$
+</center>
+
+* Example: c = 10%, r = 20%, n = 2, FV = 1000
+  * Find a bond price $P_{B}(t) = PV(t) = 1000 (.5(1-\frac{1}{(1.2)^{2}} + 1/(1.2)^{2})) = 845$
+  
+  
+___Discount Bonds___
+
+Pay a zero coupon "C = 0" until, and FV at, maturity "n"
+<center><h4>$P_{B}(t) = PV(t) = FV[\frac{1}{(1+r)^{2}}]$</h4></center>
+
+* Example
+  * c = 0%, r = 20%, n = 2, FV = 1000,
+    * $P_{B}(t) = \frac{1000}{(1+0.2)^{2}} = 690$
+  * If semi-annual compounding of 20%(per 6 months):
+    * $P_{B}(t) = \frac{1000}{(1.2)^{2n}} = 482.3$
+  
+
+
+___Perpetuity___
+
+Pay a positive coupon "C>0" forever $n\rightarrow \infty$
+<center><h4>$P_{B}(t) = PV(t) = \frac{C}{r} = \frac{cFV}{r}$</h4></center>
+
+* Example
+  * c = 10%, r = 20%, FV = 1000, $n\rightarrow \infty$
+    * $P_{B}(t) = \frac{.1 \times 1000}{.2} = 500$
+
+
+
+___Annuity___
+Pay a positive coupon "C>0" until the maturity; FV = 0
+<center><h4>$P_{B}(t) = PV(t) = (\frac{C}{r})(1 - \frac{1}{(1+r)^{n}})$</h4></center>
+
+proof
+$P_{B} = [\frac{C}{r}(1 - \frac{1}{1+r)^{n}}) + \frac{FV}{(1+r)^{n}}]$, where FV * c = __C__
+
+* C = 100, r = .2 , n = 2, FV = 0 
+  * $P_{B} = \frac{100}{.2} (1 - \frac{1}{1.2^{2}}) = 345$
+
+
+
+###  3. How do corporate bonds, municipal bonds, and US treasury bonds differ?
+  
+  
+  
+###  4. What is the relationship between interest rates and prices of bonds?
+<center><h3> Relation of price and YTM(r)</h3></center>
+
+|par, discount, or premium|||
+|:---------------------------:|:----------------------------------------:|:---------------------:|
+|sold at par|$P_{B}(t) = FV$|r=c|
+|Sold at premium| Oppoosite to discount| r < c |
+|sold at discount|$P_{B}(t) < FV$ until the maturity, $P_{B}(t+s)$ increases |r > c|
+
+
+ 
+
+#### RET
+
+<center><h4> RET(t+1) = $\frac{P_{t+1} - P_{B}(t)}{P_{B}(t)} + \frac{C}{P_{B}(t)}$</h4></center>
+<center><h3> = Capital Gain(uncertain) + Current Yield </h3></center>
+
+* Example
+  * r = 20%, c = 0%, FV = 1000, n = 2
+    * RET = $\frac{833.33 - 690}{690} + 0 = \text{20%}$
+  * if r = 30$,
+    * RET = 11.5%
+    
+###  5. What is the difference between rollover investment strategies and buy-and-hold investment strategies?
+  
+  
+  
+###  6. What are the differences between the Expectations Theory and the Liguidity Premium Theory? How well are each of these theories able to account for the three stylized facts?
+
+### __Term Structure__
+#### (1) Expectitions Hypothesis: risk neutral investors
+#### (2) Liquidity Premium Theory: risk averse investors
+
+Notations:
+<center><h1> $r^{\text{realize vs expected}}_{period, \text{period of calculating rate}}$ </h1></center>
+
+Slope of the yield curve $\approx$ shows the relationship between the avg. return and different times to maturity
+  * Flat slope: $r_{1,t} = r_{2,t} = ... = r_{n,t}$
+  
+  * Upward slope: $r_{1,t} < r_{2,t} < ... < r_{n,t}$
+  
+  * Downward slope: $r_{1,t} > r_{2,t} > ... > r_{n,t}$
+  
+__Forward rates__ are independent of the theory. 
+They are defined from a "no arbitrage condition" between
+  * buying and holding a "n-period" bond and 
+  * buying a "(n-1) - period" bond and rolling over in (n-1) by buying a "1-period" bond
+
+<center><h3>$(1+r_{2,t})^{2}$ vs $(1+r_{1,t})(1+f_{t+1})$</h3>
+<h3>or $(1+r_{3,t})^{2}$ vs $(1+r_{2,t})^{2}(1+f_{t+2})$ </h3></center>
+
+Under the expectations hypothesis:
+<center><h4>$f_{t+1} = r_{1,t+1}^{e}$</h4></center>
+
+Uncer the liquidity premium hypothesis:
+<center><h4> $f_{t+1} = r_{1,t+1}^{e} + k_{t+1}$</h4></center>
+
+*Exmaple
+  * t: $r_{1,t} = .05, r_{2,t} = .1, r_{3,t} = .15$
+  
+  * Forward Rates:
+    * n = 1, none
+    * n = 2, (1 + $r_{2,t})^{2} = (1+r_{1,t})(1+f_{t+1}) = f_{t+1} = \frac{(1.1^2)}{1.05} -1$ = 15.2%
+    * n = 3, (1 + $r_{3,t})^{3} = (1+r_{2,t})^2 (1+f_{t+2}) => f_{t+2} = \frac{1.15^3}{1.1^2} -1$ = 25.7%
+  * n = 1, 1 + $r_{1,t+1} = (1 + f_{t+1}) => r_{1,t+1} = 1 + .152 - 1 =$ 15.2%
+  * n = 2, (1 + $r_{2,t+1})^{2} = (1 + r_{1,t+1})(1 + f_{t+2})$ => $r_{2,t+1} = \sqrt{(1+.152)(1+.257)} -1 =$ 20.3%
+
+Facts of Term structure
+  1. yield curve typically upward slopping
+  
+  * data YC$\uparrow, \text{then } r_{1,t+1}^{e}\uparrow...$ Implication from theory
+  2. short and long term i/r tend to comove
+  
+  * data: comove // $r_{1,t} = 1/1 \times r_{1,t}, r_{2,t} = \frac{1}{2}(r_{1,t} + r_{1,t+1}^{e}), ...$
+  
+  3. When i/r rates high, the yield curve is downward sloping
+  
+  * Data: low interest rate, then $r^{e} \uparrow$. high interest rate, opposite
+  * Therefore, $r_{1,t+1}^{e}<r_{1,t+2}^{e}<...$ .
+  
+Expectation: explains 2,3, not 1
+Liquidity: 
+
+  
+###  7. What factors effect the demand for bonds?
+  $D_{i}(P_{i} , Y, r_{other}, \pi^{e}, \sigma_{i}/\sigma, \lambda_{i}/\lambda$)
+  
+  $P_{i}$ (-): price of the bond
+  
+  Y (+): Income
+  
+  $r_{other}$ (-): yield of other bonds
+  
+  $\pi^{e}$ (-) : expected inflation rate
+  
+  $\sigma_{i}/\sigma$ (-) : risk of bond i relative to the risk of other assets
+  
+  $\lambda_{i}/\lambda$ (+) : liquidity of bond i relative to other assets
+  
+  
+###  8. What factors effect the supply of bonds?
+  $S_{i}(P_{i}, Y, \pi^{e}, G-T)$
+  
+  $P_{i}$ (+) : price of bond i
+  Y (+) : income
+  $\pi^{2}$ (+) : expected inflation
+  G - T  (+) : government borrowing
+
+Note: i/r pro-cyclical in the data; the above bonds supply and demand ield ambiguous change in the i/r when Y $\uparrow$
+
+second question: does not happen a lot
+
+
+  
+#### Recomended practice problems: Chapter 10: 40,41
+
+## * Equity 
+
+<center><h1> $P_{0} = \frac{E_{0}d_{1} + E_{0}P_{1}}{1 + k}$</h1>
+<h3> Where $k = r_{f} + \beta(E(r_{M}) - r_{f})$ by CAPM</h3>
+<h1> $P_{0} = V_{0} = \sum_{t=1}^{\infty}\frac{E_{0}(d_{t})}{(1+k)^{t}}$</center>
+
+###  1. What are the differences between the discount dividend model and that constant dividend growth model?
+
+1) Allocation of earnings "$e_{t}$"
+  * $e_{t} = d_{t} + i_{t}$, earnings = dividends + retained earnings
+  * dividends: $d_{t} = \alpha e_{t}$
+  * retained earnings = $i_{t} = (1-\alpha)e_{t}$
+2) Current positive retained earnings ($i_{t}>0$) => growth in $e_{t+1}$.
+
+<center><h4>$e_{t+1} = e_{t} + \rho i_{t} => \rho = \frac{\Delta e_{t+1}}{i_{t}}$</h4></center>
+
+K
+  * "Market capitalization rate",
+  * __External Financing Cost__
+  * Given by CAPM: k = $r_{f} + \beta(E(r_{M}) - r_{t})$
+
+#### Implications:
+1) The growth rate of earnings(g) is given: g = $\rho(1-\alpha)$.
+
+<center><h4>$g = \frac{\Delta e_{t+1}}{e_{t}} = \frac{\Delta e_{t+1}}{e_{t}}\frac{i_{t}}{e_{t}} = \rho(1-\alpha)$ </h4></center>
+
+2) Dividends: $d_{1} = d_{0}(1+g)$.
+3) Back to the instrinsic value of the stock (k > g):
+
+<center><h4>$P_{0} = V_{0} = \frac{d_{1}}{k - g} = \frac{d_{0}(1+g)}{k - g} = \frac{d_{0}(1+g)}{k - \rho(1-\alpha)}$</h4></center>
+
+#### Implication 2:
+1) Growth rate of the stock price
+
+<center><h4>$\frac{P_{1} - P_{0}}{P_{0}} = g = \rho(1-\alpha)$</h4></center>
+
+2. Realized rate of return after a year:
+
+<center><h4>$RET = \frac{P_{1} - P_{0}}{P_{0}} + \frac{d_{1}}{P_0} = g + (k - g) = k$</h4></center>
+
+3. NPVGO
+
+<center><h3>NPVGO = $P_{0} - \frac{e_{1}}{k}$ </h3></center>
+
+4. Price-to-earnings ratio:
+
+<center><h4> $P_{0}/e = \frac{d/e}{k - g} = \frac{\alpha}{k - g}$</h4></center>
+
+
+#### Growth rate of dividends:
+  
+$\frac{d_{t+1}}{d_{t}} = \frac{\alpha \times e_{t+1} - \alpha e_{t}}{\alpha e_{t}}$
+  
+###  2. What is the market capitalization rate?
+  
+K
+  * "Market capitalization rate",
+  * __External Financing Cost__
+  * Given by CAPM: k = $r_{f} + \beta(E(r_{M}) - r_{t})$
+  
+  
+###  3. What is NPVGO?
+  
+<center><h3>NPVGO = $P_{0} - \frac{e_{1}}{k}$ </h3></center>
+  
+###  4. How does a firm's dividend policy effect the value of the firm's stock? Under what conditions can a dividend policy increase or decrease the value of the stock, and under what conditions is a firm's dividend policy irrelevant to the value of the stock?
+  k > = < $\rho$.
+  Firm gets funds, and returns __k__. Or invests funds and gets __$\rho$__ back from the market
+  
+  1. k<$\rho$, invest, don't pay dividends
+  
+  2. k>$\rho$, don't invest, pay dividends.
+  
+  3. k = $\rho$, implies k>$\rho(1-\alpha)=g$: $P_{0} = \frac{d_{1}}{k-\rho(1-\alpha)} = \frac{e}{\rho}$. $\alpha$ plays no role
+  * $P/E = \frac{1}{\rho}$
+  
+  4. $\alpha = 1$, g = $\rho(1-\alpha) = 0, P_{0} = \frac{d_{1}}{k - 0} = \frac{e_{1}}{k} => P/E = \frac{1}{k}$
+  
+
+#### Problem set 7 is the good example for this.
+
+
+#### Recomended practice problem: Chapter 13: 6,7,10,15,22
+
+
+
+
+## * Derivatives
+### Notations
+
+###  * What are the two source of value for an option?
+  
+  
+  
+###  * What are the two main kinds of options?
+  Call and Put
+  For call,
+  net profit = 
+  
+  
+###  * What is a protective put?
+  
+  
+  
+###  * How are futures contracts difference from options?
+  
+  
+  
+###  * What do we learn from PS8, problem 1, about the advantages and disadvantages of buying options? What is the advantage of purchase oth stocks themselves along with options for those stocks?
+  
+  
+  
+#### Recomended practice problem: Chapter 15: 4,5,6; Chapter 16: 3,5
+
+
+#  Sections 4: Market Efficiency and behavioral finance
+###* What is our formal definition of market efficiency hypothesis (MEH)?
+
+
+
+###* A test of the MEH is a joint test of what two things? How does this limit our ability to test the MEH?
+
+
+
+###* How is ti that market prices move in a "random walk" and yet are determined rationally?
+
+
+
+###* Market Efficiency Hypothesis (MEH): what are the differences between the following three forms of the MEH? What are the logical relations between different forms? (i.e., do any of the forms imply another form? If so, which ones?)
+  * Weak
+  
+  
+  * Semi-Strong
+  
+  
+  * Strong
+  
+  
+###* What does the MEH not imply?
+
+
+
+#### Recommended practice problems: Chapter 8: 17
